@@ -6,9 +6,9 @@ import { itemsFetchData } from '../actions/items.js';
 
 export class ItemList extends React.Component {
     
-    // componentDidMount() {
-    //     this.props.fetchData('https://www.reddit.com/.json');
-    // }
+    componentDidMount() {
+        this.props.fetchData('https://www.reddit.com/.json');
+    }
     
     render() {
         // if (this.state.hasErrored) {
@@ -17,17 +17,11 @@ export class ItemList extends React.Component {
             console.log(this.props.items);
         return (
             <View style={styles.container}>
-                <Text>{this.props.items.items[0].data.author}</Text>
+                {this.props.items.items.map((item) => (
+                    <Text>{item.data.author}</Text>
+                ))}
             </View>
-            // <ul>
-            //     {this.props.items.items.map((item) => (
-            //         //update later
-            //         <li key={item.kind}>
-            //             {item.data}
-            //         </li>
-            //     ))}
-            // </ul>
-        );
+        );       
     }
 }
 const styles = StyleSheet.create({
@@ -39,10 +33,16 @@ const styles = StyleSheet.create({
   },
 });
 
-export default connect( (state) => {
+const mapStateToProps = (state) => {
     return {
          items: state.items
     };     
 }
-)(ItemList);
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        fetchData: (url) => dispatch(itemsFetchData(url))
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ItemList);

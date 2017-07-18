@@ -29,9 +29,3 @@ const styles = StyleSheet.create({
   },
 });
 
-// module.exports = connect(
-//     //mapStateToProps,
-//     (state) => {
-//         items: state.items
-//     }
-// )(App);

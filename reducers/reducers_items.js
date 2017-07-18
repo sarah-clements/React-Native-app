@@ -7,22 +7,20 @@
 //     }
 // }
 const initialState = { 
-    items:[{
-        "kind": "t3",
-        "data": {     
-            "author": "skiroads",
-            "score": 14128,
-        }
-    }]
+    items: []
+    // items:[{
+    //     "kind": "t3",
+    //     "data": {     
+    //         "author": "skiroads",
+    //         "score": 14128,
+    //     }
+    // }]
 }
 
 export function items(state = initialState, action) {
     switch (action.type) {
         case 'ITEMS_FETCH_DATA_SUCCESS':
-            return {
-                items: action.items
-                //selectedItem: something
-            };
+            return action;
         default:
             return state;
     }

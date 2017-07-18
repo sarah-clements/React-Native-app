@@ -5,16 +5,17 @@
 //     };
 // }
 
-export function itemsFetchDataSuccess(items) {
+export function itemsFetchDataSuccess(response) {
     return {
         type: 'ITEMS_FETCH_DATA_SUCCESS',
-        items
+        items: response.data.children
     };
 }
 
 export function itemsFetchData(url) {
+    console.log(itemsFetchData);
     return (dispatch) => {
-        dispatch(itemsIsLoading(true));
+        // dispatch(itemsIsLoading(true));
         fetch(url)
             .then((response) => {
                 if (!response.ok) {
