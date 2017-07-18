@@ -4,40 +4,45 @@ import { render } from 'react-dom';
 import { connect } from 'react-redux';
 import { itemsFetchData } from '../actions/items.js';
 
-export default class ItemList extends React.Component {
+export class ItemList extends React.Component {
     
-    componentDidMount() {
-        this.props.fetchData('https://www.reddit.com/.json');
-    }
+    // componentDidMount() {
+    //     this.props.fetchData('https://www.reddit.com/.json');
+    // }
     
     render() {
         // if (this.state.hasErrored) {
         //     return <p>Sorry! There was an error loading the items</p>;
         // }
-
+            console.log(this.props.items);
         return (
-            <ul>
-                {this.props.items.map((item) => (
-                    <li key={item.id}>
-                        {item.label}
-                    </li>
-                ))}
-            </ul>
+            <View style={styles.container}>
+                <Text>{this.props.items.items[0].data.author}</Text>
+            </View>
+            // <ul>
+            //     {this.props.items.items.map((item) => (
+            //         //update later
+            //         <li key={item.kind}>
+            //             {item.data}
+            //         </li>
+            //     ))}
+            // </ul>
         );
     }
 }
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
 
-const mapStateToProps = (state) => {
+export default connect( (state) => {
     return {
-        items: state.items,
-        //hasErrored: state.itemsHasErrored
-    };
-};
+         items: state.items
+    };     
+}
+)(ItemList);
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        fetchData: (url) => dispatch(itemsFetchData(url))
-    };
-};
-
-//export connect(mapStateToProps, mapDispatchToProps);

@@ -1,32 +1,21 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { connect } from 'react-redux';
-// import { render } from 'react-dom';
-// import { Provider } from 'react-redux';
-// import configureStore from './store/configureStore';
-// import ItemList from './components/ItemList.js';
- import Header from './components/Header.js';
-
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import configureStore from './store/configureStore';
+import ItemList from './components/ItemList.js';
+ //import Header from './components/Header.js';
+const store = configureStore();
 export default class App extends React.Component {
-  constructor(props) {
-        super(props);
 
-        this.state = {
-            items: props.items, //provided by connect@mapStateToProps
-            filteredItems: this.filterItems(props.items, props.filters),
-        };
-    }
-
-    componentWillReceiveProps(nextProps) {
-        this.setState({
-            filteredItems: this.filterItems(this.state.items, nextProps.filters),
-        });
-    }
   render() {
     return (
-      <View style={styles.container}>
-        <Header />
-      </View>
+      <Provider store={store}> 
+        {/* <View style={styles.container}> */}
+          <ItemList items={this.props.items} />
+        {/* </View> */}
+     </Provider>  
     );
   }
 }
@@ -40,9 +29,9 @@ const styles = StyleSheet.create({
   },
 });
 
-module.exports = connect(
-    //mapStateToProps,
-    (state) => {
-        items: state.items
-    }
-)(ItemsContainer);
+// module.exports = connect(
+//     //mapStateToProps,
+//     (state) => {
+//         items: state.items
+//     }
+// )(App);
