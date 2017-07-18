@@ -4,20 +4,21 @@ import { StyleSheet, Text, View } from 'react-native';
 import { connect } from 'react-redux';
 import ItemList from './ItemList.js';
 import ItemDetails from './ItemDetails.js';
+import { itemsFetchData, navigateToItemDetailsView } from '../actions/actions.js';
 import {itemListViewName, itemDetailsViewName} from '../viewNames.js';
- //import Header from './components/Header.js';
+import Header from './Header.js';
 
 export class Container extends React.Component {
 
   render() {
     let currentView = null;
-    console.log("current view" + this.props.viewName);
-    switch (this.props.viewName) {
+    console.log("current view" + this.props.currentView);
+    switch (this.props.currentView) {
         case itemListViewName:
             currentView = <ItemList items={this.props.items} />;
             break;
         case itemDetailsViewName:
-            const selectedItem = _.find(this.props.items, item => item.data.id === selectedItemId);
+            const selectedItem = _.find(this.props.items, item => item.data === this.props.selectedItemId);
             console.log("selected item " + selectedItem);
             currentView = <ItemDetails item={selectedItem}/>;
             break;
@@ -27,6 +28,7 @@ export class Container extends React.Component {
 
     return (
       <View style={styles.container}>
+         <Header /> 
         {currentView}
       </View>
     );
@@ -36,7 +38,7 @@ export class Container extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: 'rgba(247,247,247,1.0)',
     alignItems: 'center',
     justifyContent: 'center',
   },

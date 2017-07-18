@@ -15,7 +15,7 @@ const initialState = {
     selectedItemId: null
 }
 
-export function items(state = initialState, action) {
+export function reducer(state = initialState, action) {
     let newState = {};
     switch (action.type) {
         case 'ITEMS_FETCH_DATA_SUCCESS':
@@ -30,6 +30,5 @@ export function items(state = initialState, action) {
         default:
             newState = state;
     }
-    console.log("newState currentView " + newState.currentView + "selectedItemId " + newState.selectedItemId);
     return newState;
 }

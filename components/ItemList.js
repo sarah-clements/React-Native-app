@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Alert, StyleSheet, Text, View, List, FlatList } from 'react-native';
+import { ScrollView, StyleSheet, Text, View, List, FlatList } from 'react-native';
 import { connect } from 'react-redux';
 import { itemsFetchData, navigateToItemDetailsView } from '../actions/actions.js';
 import Item from './Item.js';
@@ -16,11 +16,15 @@ export class ItemList extends React.Component {
         // }
         // console.log(this.props.navigateToDetailsView);
         return (
+            // <ScrollView>
             <View style={styles.container}>
-                {this.props.items.items.map((item) => (
-                    <Item key={item.data.id} navigateToDetailsView={this.props.navigateToDetailsView} item={item} />
-                ))} 
-            </View>
+                
+                    {this.props.items.map((item) => (
+                        <Item key={item.data.id} navigateToDetailsView={this.props.navigateToDetailsView} item={item} />
+                    ))} 
+                    </View>
+                // </ScrollView>
+            
         );       
     }
 }
@@ -28,8 +32,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    textAlign: 'left'
   },
 });
 

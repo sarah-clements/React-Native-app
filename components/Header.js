@@ -13,6 +13,7 @@ render() {
 
 const styles = {
     viewStyle: {
+        paddingTop: 22,
         alignItems: 'center'
     },
     textStyle: {
