@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { render } from 'react-dom';
+import { Alert, StyleSheet, Text, View, List, FlatList } from 'react-native';
 import { connect } from 'react-redux';
-import { itemsFetchData } from '../actions/items.js';
+import { itemsFetchData, navigateToItemDetailsView } from '../actions/actions.js';
+import Item from './Item.js';
 
 export class ItemList extends React.Component {
     
@@ -14,12 +14,12 @@ export class ItemList extends React.Component {
         // if (this.state.hasErrored) {
         //     return <p>Sorry! There was an error loading the items</p>;
         // }
-            console.log(this.props.items);
+        // console.log(this.props.navigateToDetailsView);
         return (
             <View style={styles.container}>
                 {this.props.items.items.map((item) => (
-                    <Text>{item.data.author}</Text>
-                ))}
+                    <Item key={item.data.id} navigateToDetailsView={this.props.navigateToDetailsView} item={item} />
+                ))} 
             </View>
         );       
     }
@@ -35,13 +35,16 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state) => {
     return {
-         items: state.items
+         items: state.items,
+         selectedItemId: state.selectedItemId,
+         currentView: state.currentView
     };     
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchData: (url) => dispatch(itemsFetchData(url))
+        fetchData: (url) => dispatch(itemsFetchData(url)),
+        navigateToDetailsView: (selectedItemId) => dispatch(navigateToItemDetailsView(selectedItemId))
     };
 }
 

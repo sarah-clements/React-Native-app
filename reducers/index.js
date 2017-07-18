@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
-import { items } from './reducers_items';
+import { items, itemsHasErrored } from './reducers_items';
 
 export default combineReducers({
     items,
-    //itemsHasErrored
+    // itemsHasErrored
 });

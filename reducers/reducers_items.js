@@ -1,27 +1,35 @@
-// export function itemsHasErrored(state = false, action) {
-//     switch (action.type) {
-//         case 'ITEMS_HAS_ERRORED':
-//             return action.hasErrored;
-//         default:
-//             return state;
-//     }
-// }
-const initialState = { 
-    items: []
-    // items:[{
-    //     "kind": "t3",
-    //     "data": {     
-    //         "author": "skiroads",
-    //         "score": 14128,
-    //     }
-    // }]
-}
+import {itemListViewName, itemDetailsViewName} from '../viewNames.js';
 
-export function items(state = initialState, action) {
+export function itemsHasErrored(state = false, action) {
     switch (action.type) {
-        case 'ITEMS_FETCH_DATA_SUCCESS':
-            return action;
+        case 'ITEMS_HAS_ERRORED':
+            return action.hasErrored;
         default:
             return state;
     }
+}
+
+const initialState = {
+    currentView: itemListViewName,  
+    items: [],
+    selectedItemId: null
+}
+
+export function items(state = initialState, action) {
+    let newState = {};
+    switch (action.type) {
+        case 'ITEMS_FETCH_DATA_SUCCESS':
+            newState = {currentView: state.currentView, items: action.items};
+            break;
+        case 'NAVIGATE_TO_ITEM_DETAILS_VIEW':
+            newState = {currentView: itemDetailsViewName, items: state.items, selectedItemId: action.selectedItemId};
+            break;
+         case 'NAVIGATE_TO_ITEM_LIST_VIEW':
+            newState = {currentView: itemListViewName, items: state.items};
+            break;
+        default:
+            newState = state;
+    }
+    console.log("newState currentView " + newState.currentView + "selectedItemId " + newState.selectedItemId);
+    return newState;
 }

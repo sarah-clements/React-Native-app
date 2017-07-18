@@ -1,14 +1,27 @@
-// export function itemsHasErrored(bool) {
-//     return {
-//         type: 'ITEMS_HAS_ERRORED',
-//         hasErrored: bool
-//     };
-// }
+export function itemsHasErrored(bool) {
+    return {
+        type: 'ITEMS_HAS_ERRORED',
+        hasErrored: bool
+    };
+}
 
 export function itemsFetchDataSuccess(response) {
     return {
         type: 'ITEMS_FETCH_DATA_SUCCESS',
         items: response.data.children
+    };
+}
+
+export function navigateToItemDetailsView(selectedItemId) {
+    return {
+        type: 'NAVIGATE_TO_ITEM_DETAILS_VIEW',
+        selectedItemId: selectedItemId
+    };
+}
+
+export function navigateToItemListView() {
+    return {
+        type: 'NAVIGATE_TO_ITEM_LIST_VIEW'
     };
 }
 
@@ -26,6 +39,6 @@ export function itemsFetchData(url) {
             })
             .then((response) => response.json())
             .then((items) => dispatch(itemsFetchDataSuccess(items)))
-            //.catch(() => dispatch(itemsHasErrored(true)));
+            .catch(() => dispatch(itemsHasErrored(true)));
     };
 }
