@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Button, StyleSheet, Text, View } from 'react-native';
 
 export default class ItemDetails extends React.Component {
     
+    _onPress = () => {
+        this.props.navigateToItemListView();
+    }
+
     render() {
        
         return ( 
@@ -13,8 +17,16 @@ export default class ItemDetails extends React.Component {
                         <Text style={styles.author} onPress={this._onPress}>By {this.props.item.data.author}</Text>
                         <Text style={styles.upvotes} onPress={this._onPress}>Upvotes: {this.props.item.data.ups}</Text>    
                     </View>
-                </View>            
-            </View>     
+                </View> 
+                <View>
+                    <Button
+                        onPress={this._onPress}
+                        title="Back"
+                        color="#841584"
+                    />
+                </View>           
+            </View> 
+    
         );       
     }
 }

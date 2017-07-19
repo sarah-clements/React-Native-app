@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, StyleSheet, Text, View, List, FlatList } from 'react-native';
+import { StyleSheet, Text, View, List, FlatList } from 'react-native';
 import { connect } from 'react-redux';
 import { itemsFetchData, navigateToItemDetailsView } from '../actions/actions.js';
 import Item from './Item.js';
@@ -11,10 +11,6 @@ export class ItemList extends React.Component {
     }
     
     render() {
-        // if (this.state.hasErrored) {
-        //     return <p>Sorry! There was an error loading the items</p>;
-        // }
-        // console.log(this.props.navigateToDetailsView);
         return (
             // <ScrollView>
             <View style={styles.container}>
@@ -31,8 +27,7 @@ export class ItemList extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    textAlign: 'left'
+    backgroundColor: '#fff'
   },
 });
 
