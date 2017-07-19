@@ -18,6 +18,5 @@ const styles = {
     },
     textStyle: {
         fontSize: 20
-
     }
 }

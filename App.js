@@ -1,12 +1,12 @@
 import React from 'react';
-import { ScrollView, StyleSheet, View } from 'react-native';
-import { Provider } from 'react-redux';
+import {ScrollView, StyleSheet, View} from 'react-native';
+import {Provider} from 'react-redux';
 import configureStore from './store/configureStore';
 import Container from './components/Container.js';
-import { itemListViewName } from './viewNames.js';
+import {ViewNames} from './viewNames.js';
 
 const store = configureStore({
-    currentView: itemListViewName,  
+    currentView: ViewNames.itemList,  
     items: [],
     selectedItemId: null
 });

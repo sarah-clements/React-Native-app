@@ -1,2 +1,4 @@
-export const itemListViewName = "itemList";
-export const itemDetailsViewName = "itemDetails";
+export const ViewNames = {
+    itemList: 'itemListView',
+    itemDetails: 'itemDetailsView'
+}

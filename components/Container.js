@@ -1,11 +1,11 @@
 import React from 'react';
 import _ from 'lodash';
-import { StyleSheet, Text, View } from 'react-native';
-import { connect } from 'react-redux';
+import {StyleSheet, Text, View} from 'react-native';
+import {connect} from 'react-redux';
 import ItemList from './ItemList.js';
 import ItemDetails from './ItemDetails.js';
-import { itemsFetchData, navigateToItemDetailsView, navigateToItemListView } from '../actions/actions.js';
-import {itemListViewName, itemDetailsViewName} from '../viewNames.js';
+import {itemsFetchData, navigateToItemDetailsView, navigateToItemListView} from '../actions/actions.js';
+import {ViewNames} from '../viewNames.js';
 import Header from './Header.js';
 
 export class Container extends React.Component {
@@ -13,10 +13,10 @@ export class Container extends React.Component {
     render() {
         let currentView = null;
         switch (this.props.currentView) {
-            case itemListViewName:
+            case ViewNames.itemList:
                 currentView = <ItemList items={this.props.items} />;
                 break;
-            case itemDetailsViewName:
+            case ViewNames.itemDetails:
                 const selectedItem = _.find(this.props.items, item => item.data === this.props.selectedItemId);
                 currentView = <ItemDetails item={selectedItem} navigateToItemListView={this.props.navigateToItemListView}/>;
                 break;
@@ -27,7 +27,7 @@ export class Container extends React.Component {
         return (
             <View style={styles.container}>
                 <Header /> 
-            {currentView}
+                {currentView}
             </View>
             );
         }

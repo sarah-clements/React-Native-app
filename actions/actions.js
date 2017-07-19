@@ -1,4 +1,3 @@
-
 export function itemsFetchDataSuccess(response) {
     return {
         type: 'ITEMS_FETCH_DATA_SUCCESS',

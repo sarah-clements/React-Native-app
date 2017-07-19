@@ -11,19 +11,17 @@ export default class ItemDetails extends React.Component {
         return ( 
             <View style={styles.container}>
                 <View style={styles.section}>
-                    <Text style={styles.header} onPress={this._onPress}>{this.props.item.data.title}</Text>
+                    <Text style={styles.header}>{this.props.item.data.title}</Text>
                     <View style={styles.row}>
-                        <Text style={styles.author} onPress={this._onPress}>By {this.props.item.data.author}</Text>
-                        <Text style={styles.upvotes} onPress={this._onPress}>Upvotes: {this.props.item.data.ups}</Text>    
+                        <Text style={styles.author}>By: {this.props.item.data.author}</Text>
+                        <Text style={styles.upvotes}>Upvotes: {this.props.item.data.ups}</Text>    
                     </View>
                 </View> 
-                <View>
-                    <Button
-                        onPress={this._onPress}
-                        title="Back"
-                        color="#841584"
-                    />
-                </View>           
+                <Button
+                    onPress={this._onPress}
+                    title="Back"
+                    color="#841584"
+                />       
             </View> 
         );       
     }
@@ -35,6 +33,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff'
     },
     section: {
+        flex: 1,
         paddingTop: 2,
         paddingLeft: 10,
         paddingRight: 10,
