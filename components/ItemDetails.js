@@ -8,7 +8,6 @@ export default class ItemDetails extends React.Component {
     }
 
     render() {
-       
         return ( 
             <View style={styles.container}>
                 <View style={styles.section}>
@@ -26,37 +25,36 @@ export default class ItemDetails extends React.Component {
                     />
                 </View>           
             </View> 
-    
         );       
     }
 }
 const styles = StyleSheet.create({
-  container: {
-   flex: 1,
-   paddingTop: 22,
-   backgroundColor: '#fff'
-  },
-  section: {
-    paddingTop: 2,
-    paddingLeft: 10,
-    paddingRight: 10,
-    paddingBottom: 2,   
-  },
-  header: {
-    fontSize: 14,
-    fontWeight: 'bold',
-  },
-  row: {
-    flex: 1, flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingTop: 10
-  },
-  author: {
-    height: 44,
-    textAlign: 'right'
-  },
-  upvotes: {
-    textAlign: 'left'
-  }
+    container: {
+        flex: 1,
+        paddingTop: 22,
+        backgroundColor: '#fff'
+    },
+    section: {
+        paddingTop: 2,
+        paddingLeft: 10,
+        paddingRight: 10,
+        paddingBottom: 2,   
+    },
+    header: {
+        fontSize: 14,
+        fontWeight: 'bold',
+    },
+    row: {
+        flex: 1, flexDirection: 'row',
+        justifyContent: 'space-between',
+        paddingTop: 10
+    },
+    author: {
+        height: 44,
+        textAlign: 'right'
+    },
+    upvotes: {
+        textAlign: 'left'
+    }
 })
 

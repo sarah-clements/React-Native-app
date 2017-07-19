@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, View } from 'react-native';
 import { Provider } from 'react-redux';
 import configureStore from './store/configureStore';
 import Container from './components/Container.js';
@@ -13,16 +13,15 @@ const store = configureStore({
 
 export default class App extends React.Component {
 
-  render() {
-
-    return (
-      <Provider store={store}>
-        <ScrollView>
-          <Container />
-        </ScrollView>
-     </Provider>  
-    );
-  }
+    render() {
+        return (
+            <Provider store={store}>
+                <ScrollView>
+                    <Container />
+                </ScrollView>
+            </Provider>  
+        );
+    }
 }
 
 

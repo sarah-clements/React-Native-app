@@ -1,9 +1,3 @@
-export function itemsHasErrored(bool) {
-    return {
-        type: 'ITEMS_HAS_ERRORED',
-        hasErrored: bool
-    };
-}
 
 export function itemsFetchDataSuccess(response) {
     return {
@@ -36,6 +30,5 @@ export function itemsFetchData(url) {
             })
             .then((response) => response.json())
             .then((items) => dispatch(itemsFetchDataSuccess(items)))
-            .catch(() => dispatch(itemsHasErrored(true)));
     };
 }

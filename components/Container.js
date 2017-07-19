@@ -10,42 +10,42 @@ import Header from './Header.js';
 
 export class Container extends React.Component {
 
-  render() {
-    let currentView = null;
-    switch (this.props.currentView) {
-        case itemListViewName:
-            currentView = <ItemList items={this.props.items} />;
-            break;
-        case itemDetailsViewName:
-            const selectedItem = _.find(this.props.items, item => item.data === this.props.selectedItemId);
-            currentView = <ItemDetails item={selectedItem} navigateToItemListView={this.props.navigateToItemListView}/>;
-            break;
-        default:
-            currentView = <ItemList items={this.props.items} />;
+    render() {
+        let currentView = null;
+        switch (this.props.currentView) {
+            case itemListViewName:
+                currentView = <ItemList items={this.props.items} />;
+                break;
+            case itemDetailsViewName:
+                const selectedItem = _.find(this.props.items, item => item.data === this.props.selectedItemId);
+                currentView = <ItemDetails item={selectedItem} navigateToItemListView={this.props.navigateToItemListView}/>;
+                break;
+            default:
+                currentView = <ItemList items={this.props.items} />;
+            }
+
+        return (
+            <View style={styles.container}>
+                <Header /> 
+            {currentView}
+            </View>
+            );
+        }
     }
 
-    return (
-      <View style={styles.container}>
-         <Header /> 
-        {currentView}
-      </View>
-    );
-  }
-}
-
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    container: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
 });
 
 const mapStateToProps = (state) => {
     return {
-         items: state.items,
-         selectedItemId: state.selectedItemId,
-         currentView: state.currentView
+        items: state.items,
+        selectedItemId: state.selectedItemId,
+        currentView: state.currentView
     };     
 }
 

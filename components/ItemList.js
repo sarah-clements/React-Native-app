@@ -12,23 +12,20 @@ export class ItemList extends React.Component {
     
     render() {
         return (
-            // <ScrollView>
-            <View style={styles.container}>
-                
-                    {this.props.items.map((item) => (
-                        <Item key={item.data.id} navigateToDetailsView={this.props.navigateToDetailsView} item={item} />
-                    ))} 
-                    </View>
-                // </ScrollView>
-            
+            <View style={styles.container}> 
+                {this.props.items.map((item) => (
+                    <Item key={item.data.id} navigateToDetailsView={this.props.navigateToDetailsView} item={item} />
+                ))} 
+            </View>            
         );       
     }
 }
+
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff'
-  },
+    container: {
+        flex: 1,
+        backgroundColor: '#fff'
+    },
 });
 
 const mapStateToProps = (state) => {
