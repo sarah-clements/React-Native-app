@@ -17,7 +17,7 @@ export class Container extends React.Component {
                 currentView = <ItemList items={this.props.items} />;
                 break;
             case ViewNames.itemDetails:
-                const selectedItem = _.find(this.props.items, item => item.data === this.props.selectedItemId);
+                const selectedItem = _.find(this.props.items, item => item.data === this.props.selectedItem);
                 currentView = <ItemDetails item={selectedItem} navigateToItemListView={this.props.navigateToItemListView}/>;
                 break;
             default:
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
 const mapStateToProps = (state) => {
     return {
         items: state.items,
-        selectedItemId: state.selectedItemId,
+        selectedItem: state.selectedItem,
         currentView: state.currentView
     };     
 }
@@ -52,7 +52,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         fetchData: (url) => dispatch(itemsFetchData(url)),
-        navigateToDetailsView: (selectedItemId) => dispatch(navigateToItemDetailsView(selectedItemId)),
+        navigateToDetailsView: (selectedItem) => dispatch(navigateToItemDetailsView(selectedItem)),
         navigateToItemListView: () => dispatch(navigateToItemListView())
     };
 }

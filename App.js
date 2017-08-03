@@ -8,7 +8,7 @@ import {ViewNames} from './viewNames.js';
 const store = configureStore({
     currentView: ViewNames.itemList,  
     items: [],
-    selectedItemId: null
+    selectedItem: null
 });
 
 export default class App extends React.Component {

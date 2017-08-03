@@ -3,7 +3,7 @@ import {ViewNames} from '../viewNames.js';
 const initialState = {
     currentView: ViewNames.itemList,  
     items: [],
-    selectedItemId: null
+    selectedItem: null
 }
 
 export function reducer(state = initialState, action) {
@@ -13,7 +13,7 @@ export function reducer(state = initialState, action) {
             newState = {currentView: state.currentView, items: action.items};
             break;
         case 'NAVIGATE_TO_ITEM_DETAILS_VIEW':
-            newState = {currentView: ViewNames.itemDetails, items: state.items, selectedItemId: action.selectedItemId};
+            newState = {currentView: ViewNames.itemDetails, items: state.items, selectedItem: action.selectedItem};
             break;
          case 'NAVIGATE_TO_ITEM_LIST_VIEW':
             newState = {currentView: ViewNames.itemList, items: state.items};

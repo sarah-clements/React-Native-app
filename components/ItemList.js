@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
 const mapStateToProps = (state) => {
     return {
          items: state.items,
-         selectedItemId: state.selectedItemId,
+         selectedItem: state.selectedItem,
          currentView: state.currentView
     };     
 }
@@ -39,7 +39,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         fetchData: (url) => dispatch(itemsFetchData(url)),
-        navigateToDetailsView: (selectedItemId) => dispatch(navigateToItemDetailsView(selectedItemId))
+        navigateToDetailsView: (selectedItem) => dispatch(navigateToItemDetailsView(selectedItem))
     };
 }
 

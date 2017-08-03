@@ -5,10 +5,10 @@ export function itemsFetchDataSuccess(response) {
     };
 }
 
-export function navigateToItemDetailsView(selectedItemId) {
+export function navigateToItemDetailsView(selectedItem) {
     return {
         type: 'NAVIGATE_TO_ITEM_DETAILS_VIEW',
-        selectedItemId: selectedItemId
+        selectedItem: selectedItem
     };
 }
 
