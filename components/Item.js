@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { TouchableHighlight, StyleSheet, Text, View } from 'react-native';
+import { TouchableHighlight, Text, View, Image } from 'react-native';
+import { styles } from '../styles.js';
 
 export default class Item extends React.Component {
     
@@ -11,42 +12,22 @@ export default class Item extends React.Component {
         return ( 
             <TouchableHighlight underlayColor="white" style={styles.container} onPress={this._onPress}>
                 <View style={styles.section}>
-                    <Text style={styles.header}>{this.props.item.data.title}</Text>
                     <View style={styles.row}>
-                        <Text style={styles.author}>By {this.props.item.data.author}</Text>
-                        <Text style={styles.upvotes}>Upvotes: {this.props.item.data.ups}</Text>    
+                         {this.props.item.data.thumbnail !== "self" && this.props.item.data.thumbnail !== "default" &&
+                         this.props.item.data.thumbnail !== "nsfw" ? 
+                        <Image
+                            style={styles.thumbnail}
+                            source={{uri: this.props.item.data.thumbnail}}
+                        /> : <Image />} 
+                        <Text style={styles.header} numberOfLines={2}>{this.props.item.data.title}</Text>
                     </View>
-                </View>            
+                    <View style={styles.row}>
+                         <Text style={styles.upvotes}>Upvotes: {this.props.item.data.ups}</Text>
+                        <Text style={styles.author}>By {this.props.item.data.author}</Text>
+                    </View>
+                </View>           
             </TouchableHighlight>     
         );       
     }
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        paddingTop: 22,
-    },
-    section: {
-        paddingTop: 2,
-        paddingLeft: 10,
-        paddingRight: 10,
-        paddingBottom: 2,   
-    },
-    header: {
-        fontSize: 14,
-        fontWeight: 'bold',
-    },
-    row: {
-        flex: 1, flexDirection: 'row',
-        justifyContent: 'space-between',
-        paddingTop: 10
-    },
-    author: {
-        height: 44,
-        textAlign: 'right'
-    },
-    upvotes: {
-        textAlign: 'left'
-    }
-})

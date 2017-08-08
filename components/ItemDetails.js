@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { Button, Text, View, Image } from 'react-native';
+import { styles } from '../styles.js';
 
 export default class ItemDetails extends React.Component {
     
@@ -11,49 +12,33 @@ export default class ItemDetails extends React.Component {
         return ( 
             <View style={styles.container}>
                 <View style={styles.section}>
-                    <Text style={styles.header}>{this.props.item.data.title}</Text>
                     <View style={styles.row}>
-                        <Text style={styles.author}>By: {this.props.item.data.author}</Text>
-                        <Text style={styles.upvotes}>Upvotes: {this.props.item.data.ups}</Text>    
+                        <Text style={styles.subtitle}>{this.props.item.data.subreddit_name_prefixed}</Text>
                     </View>
-                </View> 
-                <Button
+                    <View>
+                        <Text style={styles.header}>{this.props.item.data.title}</Text>
+                    </View>
+                    <View style={styles.row}>
+                        {this.props.item.data.thumbnail !== "self" && this.props.item.data.thumbnail !== "default" && 
+                        this.props.item.data.thumbnail !== "nsfw" ? 
+                        <Image
+                            style={styles.thumbnail_large}
+                            source={{uri: this.props.item.data.preview.images[0].source.url}}
+                        /> : <Image />}
+                    </View>
+                    <View style={styles.row}>
+                        <Text style={styles.upvotes}>Upvotes: {this.props.item.data.ups}</Text>    
+                        <Text style={styles.author}>By {this.props.item.data.author}</Text>
+                    </View>
+                    <Button
                     onPress={this._onPress}
                     title="Back"
                     color="#841584"
-                />       
+                    /> 
+                </View>      
             </View> 
         );       
     }
 }
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        paddingTop: 22,
-        backgroundColor: '#fff'
-    },
-    section: {
-        flex: 1,
-        paddingTop: 2,
-        paddingLeft: 10,
-        paddingRight: 10,
-        paddingBottom: 2,   
-    },
-    header: {
-        fontSize: 14,
-        fontWeight: 'bold',
-    },
-    row: {
-        flex: 1, flexDirection: 'row',
-        justifyContent: 'space-between',
-        paddingTop: 10
-    },
-    author: {
-        height: 44,
-        textAlign: 'right'
-    },
-    upvotes: {
-        textAlign: 'left'
-    }
-})
+
 

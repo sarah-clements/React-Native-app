@@ -25,8 +25,8 @@ export class Container extends React.Component {
             }
 
         return (
-            <View style={styles.container}>
-                <Header /> 
+            <View>
+                <Header/>
                 {currentView}
             </View>
             );
@@ -38,6 +38,9 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
+        backgroundColor: 'grey',
+        padding: 0,
+        margin: 0
     },
 });
 

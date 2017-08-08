@@ -29,5 +29,9 @@ export function itemsFetchData(url) {
             })
             .then((response) => response.json())
             .then((items) => dispatch(itemsFetchDataSuccess(items)))
+            .catch(function(error) {
+                console.log('There has been a problem with your fetch operation: ' + error.message);
+                throw error;
+            });
     };
 }
