@@ -2,7 +2,7 @@
 # React Native with Redux test project
 This is a simple project I created in order to explore React Native and Redux, using Fetch to make an API call to reddit (this is not a full-fledged app).
 
-![alt tag](https://github.com/sarah-clements/React-Native-app/readMe_img/react_native_project.jpg)
+![alt tag](https://github.com/sarah-clements/React-Native-app/blob/master/readMe_img/react_native_project.jpg)
 
 ## How to Run the App
 
