@@ -35,8 +35,8 @@ export const styles = StyleSheet.create({
         marginRight: 10
     },
     thumbnail_large: {
-        height: 300,
-        width: 300
+        height: 290,
+        width: 290,
     },
     subtitle: {
         color: 'grey',

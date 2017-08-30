@@ -7,7 +7,7 @@ import Item from './Item.js';
 export class ItemList extends React.Component {
     
     componentDidMount() {
-        this.props.fetchData('https://www.reddit.com/.json');
+        {this.props.items.length === 0 ? this.props.fetchData('https://www.reddit.com/.json') : console.log("fetchData not called")}
     }
     
     render() {

@@ -19,7 +19,7 @@ export default class Item extends React.Component {
                             style={styles.thumbnail}
                             source={{uri: this.props.item.data.thumbnail}}
                         /> : <Image />} 
-                        <Text style={styles.header} numberOfLines={2}>{this.props.item.data.title}</Text>
+                        <Text style={styles.header} numberOfLines={3}>{this.props.item.data.title}</Text>
                     </View>
                     <View style={styles.row}>
                          <Text style={styles.upvotes}>Upvotes: {this.props.item.data.ups}</Text>

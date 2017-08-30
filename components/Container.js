@@ -33,17 +33,6 @@ export class Container extends React.Component {
         }
     }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: 'grey',
-        padding: 0,
-        margin: 0
-    },
-});
-
 const mapStateToProps = (state) => {
     return {
         items: state.items,
